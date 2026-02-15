@@ -714,8 +714,22 @@
         <!-- Stats -->
         <div class="stats-grid">
             <div class="stat-card">
+                <div class="stat-label">Produtos Cadastrados</div>
+                <div class="stat-value" id="totalProdutos">0</div>
+            </div>
+            <div class="stat-card">
                 <div class="stat-label">Total em Estoque</div>
                 <div class="stat-value" id="totalEstoque">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">💰 Capital Empatado</div>
+                <div class="stat-value" id="capitalEmpatado" style="font-size: 1.8em;">R$ 0,00</div>
+                <div style="font-size: 0.75em; color: var(--text-muted); margin-top: 5px;">Custo do estoque</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">💵 Valor Potencial</div>
+                <div class="stat-value" id="valorPotencial" style="font-size: 1.8em;">R$ 0,00</div>
+                <div style="font-size: 0.75em; color: var(--text-muted); margin-top: 5px;">Se vender tudo</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Vendas Hoje</div>
@@ -728,6 +742,11 @@
             <div class="stat-card">
                 <div class="stat-label">Contas a Receber</div>
                 <div class="stat-value" id="contasReceber">R$ 0,00</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">📈 Lucro Potencial</div>
+                <div class="stat-value" id="lucroPotencial" style="font-size: 1.8em; color: var(--success);">R$ 0,00</div>
+                <div style="font-size: 0.75em; color: var(--text-muted); margin-top: 5px;">Se vender tudo</div>
             </div>
         </div>
 
@@ -1417,11 +1436,18 @@
         }
 
         function removerProduto(id) {
-            if (confirm('Deseja realmente remover este produto?')) {
-                produtos = produtos.filter(p => p.id !== id);
-                salvarDados();
-                atualizarTudo();
-                mostrarAlerta('Produto removido!', 'warning');
+            const senha = prompt('🔒 Digite a senha para excluir o produto:');
+            
+            // Senha padrão: 1234 (você pode mudar depois)
+            if (senha === '1234') {
+                if (confirm('Deseja realmente remover este produto?')) {
+                    produtos = produtos.filter(p => p.id !== id);
+                    salvarDados();
+                    atualizarTudo();
+                    mostrarAlerta('Produto removido com sucesso!', 'success');
+                }
+            } else if (senha !== null) {
+                alert('❌ Senha incorreta! Apenas o administrador pode excluir produtos.');
             }
         }
 
@@ -1864,9 +1890,24 @@
 
         // Estatísticas
         function atualizarEstatisticas() {
-            // Total em estoque
+            // Total de produtos cadastrados
+            document.getElementById('totalProdutos').textContent = produtos.length;
+            
+            // Total de unidades em estoque
             const totalEstoque = produtos.reduce((sum, p) => sum + p.quantidade, 0);
             document.getElementById('totalEstoque').textContent = totalEstoque;
+            
+            // Capital empatado (custo total do estoque)
+            const capitalEmpatado = produtos.reduce((sum, p) => sum + (p.precoCusto * p.quantidade), 0);
+            document.getElementById('capitalEmpatado').textContent = `R$ ${capitalEmpatado.toFixed(2)}`;
+            
+            // Valor potencial de venda (se vender tudo)
+            const valorPotencial = produtos.reduce((sum, p) => sum + (p.precoVenda * p.quantidade), 0);
+            document.getElementById('valorPotencial').textContent = `R$ ${valorPotencial.toFixed(2)}`;
+            
+            // Lucro potencial (diferença entre venda e custo)
+            const lucroPotencial = valorPotencial - capitalEmpatado;
+            document.getElementById('lucroPotencial').textContent = `R$ ${lucroPotencial.toFixed(2)}`;
             
             // Vendas hoje
             const hoje = new Date().toISOString().split('T')[0];
