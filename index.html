@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -46,7 +47,6 @@
             padding: 20px;
         }
 
-        /* Header */
         .header {
             background: linear-gradient(135deg, var(--secondary) 0%, #2a2a4e 100%);
             padding: 25px 0;
@@ -108,7 +108,6 @@
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
         }
 
-        /* Navigation */
         .nav-tabs {
             display: flex;
             gap: 10px;
@@ -146,7 +145,6 @@
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
 
-        /* Cards */
         .card {
             background: var(--bg-card);
             border-radius: 12px;
@@ -172,7 +170,6 @@
             border-bottom: 2px solid var(--border);
         }
 
-        /* Forms */
         .form-group {
             margin-bottom: 20px;
         }
@@ -209,7 +206,6 @@
             gap: 15px;
         }
 
-        /* Buttons */
         .btn {
             padding: 12px 28px;
             border: none;
@@ -247,7 +243,6 @@
             font-size: 0.85em;
         }
 
-        /* Tables */
         .table-container {
             overflow-x: auto;
             margin-top: 20px;
@@ -288,7 +283,6 @@
             cursor: pointer;
         }
 
-        /* Stats */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -325,7 +319,6 @@
             color: var(--primary);
         }
 
-        /* Product Grid */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -401,7 +394,6 @@
             font-weight: 600;
         }
 
-        /* Parcelas */
         .parcela-item {
             display: flex;
             justify-content: space-between;
@@ -450,7 +442,6 @@
             color: white;
         }
 
-        /* Tabs Content */
         .tab-content {
             display: none;
             animation: fadeIn 0.3s ease;
@@ -471,7 +462,6 @@
             }
         }
 
-        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -540,7 +530,6 @@
             transform: rotate(90deg);
         }
 
-        /* Cliente Card */
         .cliente-card {
             background: var(--bg-dark);
             border: 2px solid var(--border);
@@ -598,7 +587,6 @@
             margin-top: 5px;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             h1 {
                 font-size: 1.5em;
@@ -700,6 +688,69 @@
             color: var(--text-light);
             font-weight: 700;
         }
+        
+        .alerta-flutuante {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 16px 20px;
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 10000;
+            min-width: 300px;
+            max-width: 450px;
+            font-weight: 500;
+            animation: slideIn 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .alerta-sucesso {
+            background: #10b981;
+            border-left: 5px solid #059669;
+        }
+        
+        .alerta-erro {
+            background: #ef4444;
+            border-left: 5px solid #dc2626;
+        }
+        
+        .alerta-aviso {
+            background: #f59e0b;
+            border-left: 5px solid #d97706;
+        }
+        
+        .alerta-info {
+            background: #3b82f6;
+            border-left: 5px solid #2563eb;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+        
+        .alerta-flutuante:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
     </style>
 </head>
 <body>
@@ -721,7 +772,6 @@
     </div>
 
     <div class="container">
-        <!-- Stats -->
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-label">Produtos Cadastrados</div>
@@ -760,7 +810,6 @@
             </div>
         </div>
 
-        <!-- Navigation -->
         <div class="nav-tabs">
             <button class="nav-tab active" onclick="showTab('produtos')">📦 Produtos</button>
             <button class="nav-tab" onclick="showTab('clientes')">👥 Clientes</button>
@@ -770,7 +819,6 @@
             <button class="nav-tab" onclick="showTab('catalogo')">🖼️ Catálogo</button>
         </div>
 
-        <!-- Tab: Produtos -->
         <div id="produtos" class="tab-content active">
             <div class="card">
                 <div class="card-header">Adicionar Produto</div>
@@ -845,7 +893,6 @@
             </div>
         </div>
 
-        <!-- Tab: Clientes -->
         <div id="clientes" class="tab-content">
             <div class="card">
                 <div class="card-header">Cadastrar Cliente</div>
@@ -882,7 +929,6 @@
             </div>
         </div>
 
-        <!-- Tab: Vendas -->
         <div id="vendas" class="tab-content">
             <div class="card">
                 <div class="card-header">Registrar Venda</div>
@@ -981,1221 +1027,4 @@
                                 <th>Produto</th>
                                 <th>Qtd</th>
                                 <th>Total</th>
-                                <th>Pagamento</th>
-                                <th>Vendedor</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody id="listaVendas"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tab: Financeiro -->
-        <div id="financeiro" class="tab-content">
-            <div class="card">
-                <div class="card-header">Resumo Financeiro</div>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-label">Vendas Você</div>
-                        <div class="stat-value" id="vendasVoce">R$ 0,00</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-label">Vendas Esposa</div>
-                        <div class="stat-value" id="vendasEsposa">R$ 0,00</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-label">Vendas Filha</div>
-                        <div class="stat-value" id="vendasFilha">R$ 0,00</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-label">Lucro Total</div>
-                        <div class="stat-value" id="lucroTotal">R$ 0,00</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">Adicionar Despesa</div>
-                <form id="formDespesa" onsubmit="adicionarDespesa(event)">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Descrição *</label>
-                            <input type="text" id="descricaoDespesa" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Valor (R$) *</label>
-                            <input type="number" id="valorDespesa" step="0.01" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Data *</label>
-                            <input type="date" id="dataDespesa" required>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Adicionar Despesa</button>
-                </form>
-            </div>
-
-            <div class="card">
-                <div class="card-header">Despesas</div>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Data</th>
-                                <th>Descrição</th>
-                                <th>Valor</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody id="listaDespesas"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tab: Contas a Receber -->
-        <div id="contas" class="tab-content">
-            <div class="card">
-                <div class="card-header">Contas a Receber</div>
-                <div id="listaContasReceber"></div>
-            </div>
-        </div>
-
-        <!-- Tab: Catálogo -->
-        <div id="catalogo" class="tab-content">
-            <div class="card">
-                <div class="card-header">Catálogo de Produtos</div>
-                <div class="product-grid" id="catalogoProdutos"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Detalhes do Cliente -->
-    <div id="modalCliente" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title" id="modalClienteNome"></h2>
-                <button class="close-modal" onclick="fecharModal()">&times;</button>
-            </div>
-            <div id="modalClienteConteudo"></div>
-        </div>
-    </div>
-
-    <script>
-        // Configuração do Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyAhj8TxnxM6v0YpzCS1vFgHHQe6vkzGod",
-    authDomain: "sistema-vendas-perfumes.firebaseapp.com",
-    databaseURL: "https://sistema-vendas-perfumes-default-rtdb.firebaseio.com",
-    projectId: "sistema-vendas-perfumes",
-    storageBucket: "sistema-vendas-perfumes.firebasestorage.app",
-    messagingSenderId: "361311945051",
-    appId: "1:361311945051:web:bcf5acba4b89c5b781a7e"
-        };
-
-        // Inicializar Firebase
-        firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
-        
-        // Estado Global
-        let vendedorAtual = 'Você';
-        let produtos = [];
-        let clientes = [];
-        let vendas = [];
-        let despesas = [];
-        let contasReceber = [];
-        let imagemProdutoTemp = null;
-        let usandoNuvem = false;
-
-        // Verificar se deve usar nuvem
-        function verificarModoNuvem() {
-            const modoNuvem = localStorage.getItem('usarNuvem');
-            return modoNuvem === 'true';
-        }
-
-        // Preview de imagem
-        function previewImagem(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    imagemProdutoTemp = e.target.result;
-                    document.getElementById('imagemPreview').src = e.target.result;
-                    document.getElementById('previewFoto').style.display = 'block';
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        // Carregar dados (Firebase ou localStorage)
-        async function carregarDados() {
-            usandoNuvem = verificarModoNuvem();
-            
-            if (usandoNuvem) {
-                await carregarDadosNuvem();
-            } else {
-                carregarDadosLocal();
-                verificarMigracao();
-            }
-            
-            atualizarTudo();
-        }
-
-        // Carregar dados do localStorage
-        function carregarDadosLocal() {
-            try {
-                const produtosData = localStorage.getItem('perfumes_produtos');
-                produtos = produtosData ? JSON.parse(produtosData) : [];
-                
-                const clientesData = localStorage.getItem('perfumes_clientes');
-                clientes = clientesData ? JSON.parse(clientesData) : [];
-                
-                const vendasData = localStorage.getItem('perfumes_vendas');
-                vendas = vendasData ? JSON.parse(vendasData) : [];
-                
-                const despesasData = localStorage.getItem('perfumes_despesas');
-                despesas = despesasData ? JSON.parse(despesasData) : [];
-                
-                const contasData = localStorage.getItem('perfumes_contasReceber');
-                contasReceber = contasData ? JSON.parse(contasData) : [];
-                
-                console.log('Dados carregados do localStorage:', {
-                    produtos: produtos.length,
-                    clientes: clientes.length,
-                    vendas: vendas.length
-                });
-            } catch (error) {
-                console.error('Erro ao carregar dados locais:', error);
-                produtos = [];
-                clientes = [];
-                vendas = [];
-                despesas = [];
-                contasReceber = [];
-            }
-        }
-
-        // Carregar dados da nuvem (Firebase)
-        async function carregarDadosNuvem() {
-            try {
-                console.log('Carregando dados da nuvem...');
-                
-                const snapshot = await database.ref('/').once('value');
-                const dados = snapshot.val();
-                
-                if (dados) {
-                    produtos = dados.produtos || [];
-                    clientes = dados.clientes || [];
-                    vendas = dados.vendas || [];
-                    despesas = dados.despesas || [];
-                    contasReceber = dados.contasReceber || [];
-                    
-                    console.log('Dados carregados da nuvem:', {
-                        produtos: produtos.length,
-                        clientes: clientes.length,
-                        vendas: vendas.length
-                    });
-                    
-                    // Sincronização em tempo real
-                    sincronizarTempoReal();
-                } else {
-                    console.log('Nenhum dado na nuvem ainda');
-                }
-            } catch (error) {
-                console.error('Erro ao carregar da nuvem:', error);
-                mostrarAlerta('Erro ao conectar com a nuvem. Usando dados locais.', 'warning');
-                carregarDadosLocal();
-            }
-        }
-
-        // Sincronizar em tempo real
-        function sincronizarTempoReal() {
-            database.ref('/produtos').on('value', (snapshot) => {
-                const dados = snapshot.val();
-                if (dados && JSON.stringify(dados) !== JSON.stringify(produtos)) {
-                    produtos = dados;
-                    renderizarProdutos();
-                    renderizarCatalogo();
-                    atualizarEstatisticas();
-                }
-            });
-            
-            database.ref('/vendas').on('value', (snapshot) => {
-                const dados = snapshot.val();
-                if (dados && JSON.stringify(dados) !== JSON.stringify(vendas)) {
-                    vendas = dados;
-                    renderizarVendas();
-                    atualizarEstatisticas();
-                }
-            });
-        }
-
-        // Salvar dados (Firebase ou localStorage)
-        async function salvarDados() {
-            if (usandoNuvem) {
-                await salvarDadosNuvem();
-            } else {
-                salvarDadosLocal();
-            }
-        }
-
-        // Salvar dados no localStorage
-        function salvarDadosLocal() {
-            try {
-                localStorage.setItem('perfumes_produtos', JSON.stringify(produtos));
-                localStorage.setItem('perfumes_clientes', JSON.stringify(clientes));
-                localStorage.setItem('perfumes_vendas', JSON.stringify(vendas));
-                localStorage.setItem('perfumes_despesas', JSON.stringify(despesas));
-                localStorage.setItem('perfumes_contasReceber', JSON.stringify(contasReceber));
-                console.log('Dados salvos no localStorage');
-            } catch (error) {
-                console.error('Erro ao salvar dados locais:', error);
-                mostrarAlerta('Erro ao salvar dados. Tente novamente.', 'warning');
-            }
-        }
-
-        // Salvar dados na nuvem (Firebase)
-        async function salvarDadosNuvem() {
-            try {
-                await database.ref('/').set({
-                    produtos: produtos,
-                    clientes: clientes,
-                    vendas: vendas,
-                    despesas: despesas,
-                    contasReceber: contasReceber,
-                    ultimaAtualizacao: new Date().toISOString()
-                });
-                console.log('Dados salvos na nuvem!');
-            } catch (error) {
-                console.error('Erro ao salvar na nuvem:', error);
-                mostrarAlerta('Erro ao salvar na nuvem. Salvando localmente.', 'warning');
-                salvarDadosLocal();
-            }
-        }
-
-        // Verificar se precisa migrar dados
-        function verificarMigracao() {
-            const temDadosLocais = produtos.length > 0 || clientes.length > 0 || vendas.length > 0;
-            const jaMigrou = localStorage.getItem('jaMigrouParaNuvem') === 'true';
-            
-            if (temDadosLocais && !jaMigrou && !usandoNuvem) {
-                setTimeout(() => {
-                    if (confirm(`🌥️ Encontramos ${produtos.length} produtos salvos localmente!\n\nDeseja migrar seus dados para a nuvem?\n\nCom a nuvem, você e sua família poderão acessar de qualquer dispositivo!`)) {
-                        migrarParaNuvem();
-                    }
-                }, 2000);
-            }
-        }
-
-        // Migrar dados para nuvem
-        async function migrarParaNuvem() {
-            try {
-                mostrarAlerta('Migrando dados para a nuvem... Aguarde!', 'success');
-                
-                // Salvar na nuvem
-                await database.ref('/').set({
-                    produtos: produtos,
-                    clientes: clientes,
-                    vendas: vendas,
-                    despesas: despesas,
-                    contasReceber: contasReceber,
-                    ultimaAtualizacao: new Date().toISOString()
-                });
-                
-                // Marcar como usando nuvem
-                localStorage.setItem('usarNuvem', 'true');
-                localStorage.setItem('jaMigrouParaNuvem', 'true');
-                usandoNuvem = true;
-                
-                mostrarAlerta(`✅ Migração concluída! ${produtos.length} produtos na nuvem!`, 'success');
-                
-                // Recarregar página para ativar sincronização
-                setTimeout(() => {
-                    location.reload();
-                }, 2000);
-            } catch (error) {
-                console.error('Erro na migração:', error);
-                mostrarAlerta('Erro ao migrar para nuvem. Tente novamente.', 'warning');
-            }
-        }
-
-        // Navegação
-        function showTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            document.querySelectorAll('.nav-tab').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
-            
-            // Atualizar dados ao mudar de aba
-            if (tabName === 'clientes') {
-                renderizarClientes();
-            }
-        }
-
-        function selectVendor(vendor) {
-            vendedorAtual = vendor;
-            document.querySelectorAll('.vendor-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-        }
-
-        // Clientes
-        function cadastrarCliente(e) {
-            e.preventDefault();
-            
-            const cliente = {
-                id: Date.now(),
-                nome: document.getElementById('nomeClienteCadastro').value,
-                telefone: document.getElementById('telefoneCliente').value,
-                endereco: document.getElementById('enderecoCliente').value,
-                observacoes: document.getElementById('observacoesCliente').value,
-                dataCadastro: new Date().toISOString()
-            };
-            
-            clientes.push(cliente);
-            salvarDados();
-            atualizarTudo();
-            
-            document.getElementById('formCliente').reset();
-            mostrarAlerta('Cliente cadastrado com sucesso!', 'success');
-        }
-
-        function renderizarClientes() {
-            const container = document.getElementById('listaClientes');
-            const selectVenda = document.getElementById('clienteVenda');
-            
-            container.innerHTML = '';
-            selectVenda.innerHTML = '<option value="">Selecione um cliente</option>';
-            
-            if (clientes.length === 0) {
-                container.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 40px;">Nenhum cliente cadastrado ainda.</p>';
-                return;
-            }
-            
-            clientes.forEach(cliente => {
-                // Calcular estatísticas do cliente
-                const vendasCliente = vendas.filter(v => v.clienteId === cliente.id);
-                const totalCompras = vendasCliente.reduce((sum, v) => sum + v.total, 0);
-                const qtdCompras = vendasCliente.length;
-                const contasPendentes = contasReceber.filter(c => c.clienteId === cliente.id && !c.paga);
-                const totalPendente = contasPendentes.reduce((sum, c) => sum + c.valor, 0);
-                
-                container.innerHTML += `
-                    <div class="cliente-card" onclick="abrirDetalhesCliente(${cliente.id})">
-                        <div class="cliente-nome">👤 ${cliente.nome}</div>
-                        <div class="cliente-info">
-                            <span>📱 ${cliente.telefone}</span>
-                            <span>📍 ${cliente.endereco}</span>
-                        </div>
-                        <div class="cliente-stats">
-                            <div class="cliente-stat">
-                                <div class="cliente-stat-label">Total Comprado</div>
-                                <div class="cliente-stat-value">R$ ${totalCompras.toFixed(2)}</div>
-                            </div>
-                            <div class="cliente-stat">
-                                <div class="cliente-stat-label">Compras</div>
-                                <div class="cliente-stat-value">${qtdCompras}</div>
-                            </div>
-                            <div class="cliente-stat">
-                                <div class="cliente-stat-label">A Receber</div>
-                                <div class="cliente-stat-value" style="color: ${totalPendente > 0 ? 'var(--warning)' : 'var(--success)'}">
-                                    R$ ${totalPendente.toFixed(2)}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                
-                selectVenda.innerHTML += `<option value="${cliente.id}">${cliente.nome} - ${cliente.telefone}</option>`;
-            });
-        }
-
-        function filtrarClientes() {
-            const busca = document.getElementById('searchCliente').value.toLowerCase();
-            const cards = document.querySelectorAll('.cliente-card');
-            
-            cards.forEach(card => {
-                const texto = card.textContent.toLowerCase();
-                if (texto.includes(busca)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        function abrirDetalhesCliente(clienteId) {
-            const cliente = clientes.find(c => c.id === clienteId);
-            if (!cliente) return;
-            
-            const vendasCliente = vendas.filter(v => v.clienteId === clienteId);
-            const contasCliente = contasReceber.filter(c => c.clienteId === clienteId);
-            const totalCompras = vendasCliente.reduce((sum, v) => sum + v.total, 0);
-            const totalPendente = contasCliente.filter(c => !c.paga).reduce((sum, c) => sum + c.valor, 0);
-            
-            document.getElementById('modalClienteNome').textContent = cliente.nome;
-            
-            let conteudo = `
-                <div class="info-section">
-                    <h4>📋 Informações de Contato</h4>
-                    <div class="info-row">
-                        <span class="info-label">Telefone:</span>
-                        <span class="info-value">${cliente.telefone}</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">Endereço:</span>
-                        <span class="info-value">${cliente.endereco}</span>
-                    </div>
-                    ${cliente.observacoes ? `
-                    <div class="info-row">
-                        <span class="info-label">Observações:</span>
-                        <span class="info-value">${cliente.observacoes}</span>
-                    </div>
-                    ` : ''}
-                </div>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
-                    <div class="stat-card">
-                        <div class="stat-label">Total Comprado</div>
-                        <div class="stat-value" style="font-size: 1.5em;">R$ ${totalCompras.toFixed(2)}</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-label">Compras Realizadas</div>
-                        <div class="stat-value" style="font-size: 1.5em;">${vendasCliente.length}</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-label">A Receber</div>
-                        <div class="stat-value" style="font-size: 1.5em; color: ${totalPendente > 0 ? 'var(--warning)' : 'var(--success)'}">
-                            R$ ${totalPendente.toFixed(2)}
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            if (vendasCliente.length > 0) {
-                conteudo += `
-                    <div class="info-section">
-                        <h4>🛍️ Histórico de Compras</h4>
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Data</th>
-                                        <th>Produto</th>
-                                        <th>Qtd</th>
-                                        <th>Total</th>
-                                        <th>Pagamento</th>
-                                        <th>Vendedor</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    ${vendasCliente.map(venda => {
-                                        const data = new Date(venda.data);
-                                        let pagamento = venda.formaPagamento.charAt(0).toUpperCase() + venda.formaPagamento.slice(1);
-                                        if (venda.parcelas) pagamento += ` (${venda.parcelas}x)`;
-                                        return `
-                                            <tr>
-                                                <td>${data.toLocaleDateString('pt-BR')}</td>
-                                                <td>${venda.produtoNome}</td>
-                                                <td>${venda.quantidade}</td>
-                                                <td style="color: var(--primary)">R$ ${venda.total.toFixed(2)}</td>
-                                                <td>${pagamento}</td>
-                                                <td>${venda.vendedor}</td>
-                                            </tr>
-                                        `;
-                                    }).join('')}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                `;
-            }
-            
-            if (contasCliente.length > 0) {
-                conteudo += `
-                    <div class="info-section" style="margin-top: 20px;">
-                        <h4>💳 Parcelas</h4>
-                        ${contasCliente.map(conta => {
-                            const hoje = new Date();
-                            const vencimento = new Date(conta.dataVencimento + 'T00:00:00');
-                            const atrasada = !conta.paga && vencimento < hoje;
-                            const classe = conta.paga ? 'paga' : (atrasada ? 'atrasada' : '');
-                            
-                            return `
-                                <div class="parcela-item ${classe}" style="margin-bottom: 10px;">
-                                    <div>
-                                        <span style="font-weight: 600;">Parcela ${conta.numeroParcela}/${conta.totalParcelas}</span>
-                                        <span style="color: var(--text-muted); margin-left: 15px;">
-                                            Venc: ${vencimento.toLocaleDateString('pt-BR')}
-                                        </span>
-                                        ${atrasada ? '<span class="badge badge-danger" style="margin-left: 10px;">ATRASADA</span>' : ''}
-                                        ${conta.paga ? '<span class="badge badge-success" style="margin-left: 10px;">PAGA</span>' : ''}
-                                    </div>
-                                    <div style="display: flex; align-items: center; gap: 15px;">
-                                        <span style="font-weight: 700; color: var(--primary);">R$ ${conta.valor.toFixed(2)}</span>
-                                    </div>
-                                </div>
-                            `;
-                        }).join('')}
-                    </div>
-                `;
-            }
-            
-            document.getElementById('modalClienteConteudo').innerHTML = conteudo;
-            document.getElementById('modalCliente').classList.add('active');
-        }
-
-        function fecharModal() {
-            document.getElementById('modalCliente').classList.remove('active');
-        }
-
-        function atualizarInfoCliente() {
-            const clienteId = parseInt(document.getElementById('clienteVenda').value);
-            const infoDiv = document.getElementById('infoClienteVenda');
-            
-            if (!clienteId) {
-                infoDiv.style.display = 'none';
-                return;
-            }
-            
-            const cliente = clientes.find(c => c.id === clienteId);
-            if (!cliente) return;
-            
-            const vendasCliente = vendas.filter(v => v.clienteId === clienteId);
-            const totalCompras = vendasCliente.reduce((sum, v) => sum + v.total, 0);
-            
-            document.getElementById('infoTelefone').textContent = cliente.telefone;
-            document.getElementById('infoEndereco').textContent = cliente.endereco;
-            document.getElementById('infoTotalComprado').textContent = `R$ ${totalCompras.toFixed(2)}`;
-            
-            infoDiv.style.display = 'block';
-        }
-
-        // Produtos
-        function adicionarProduto(e) {
-            e.preventDefault();
-            
-            const produto = {
-                id: Date.now(),
-                nome: document.getElementById('nomeProduto').value,
-                categoria: document.getElementById('categoriaProduto').value,
-                descricao: document.getElementById('descricaoProduto').value,
-                foto: imagemProdutoTemp,
-                precoCusto: parseFloat(document.getElementById('precoCusto').value),
-                precoVenda: parseFloat(document.getElementById('precoVenda').value),
-                quantidade: parseInt(document.getElementById('quantidadeEstoque').value),
-                emoji: document.getElementById('emojiProduto').value || '📦'
-            };
-            
-            produtos.push(produto);
-            salvarDados();
-            atualizarTudo();
-            
-            document.getElementById('formProduto').reset();
-            document.getElementById('previewFoto').style.display = 'none';
-            imagemProdutoTemp = null;
-            mostrarAlerta('Produto adicionado com sucesso!', 'success');
-        }
-
-        function removerProduto(id) {
-            const senha = prompt('🔒 Digite a senha para excluir o produto:');
-            
-            // Senha padrão: 1234 (você pode mudar depois)
-            if (senha === '1234') {
-                if (confirm('Deseja realmente remover este produto?')) {
-                    produtos = produtos.filter(p => p.id !== id);
-                    salvarDados();
-                    atualizarTudo();
-                    mostrarAlerta('Produto removido com sucesso!', 'success');
-                }
-            } else if (senha !== null) {
-                alert('❌ Senha incorreta! Apenas o administrador pode excluir produtos.');
-            }
-        }
-
-        function renderizarProdutos() {
-            const lista = document.getElementById('listaProdutos');
-            const select = document.getElementById('produtoVenda');
-            
-            lista.innerHTML = '';
-            select.innerHTML = '<option value="">Selecione um produto</option>';
-            
-            produtos.forEach(produto => {
-                const margem = ((produto.precoVenda - produto.precoCusto) / produto.precoCusto * 100).toFixed(1);
-                const stockClass = produto.quantidade === 0 ? 'stock-out' : produto.quantidade < 5 ? 'stock-low' : '';
-                
-                const descricaoResumida = produto.descricao 
-                    ? `<div style="font-size: 0.85em; color: var(--text-muted); margin-top: 5px;">${produto.descricao.substring(0, 50)}${produto.descricao.length > 50 ? '...' : ''}</div>`
-                    : '';
-                
-                lista.innerHTML += `
-                    <tr onclick="verDetalhesProduto(${produto.id})" style="cursor: pointer;">
-                        <td>
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                ${produto.foto ? `<img src="${produto.foto}" style="width: 40px; height: 40px; object-fit: cover; border-radius: 6px; border: 1px solid var(--border);">` : `<span style="font-size: 1.5em;">${produto.emoji}</span>`}
-                                <div>
-                                    <strong>${produto.nome}</strong>
-                                    ${descricaoResumida}
-                                </div>
-                            </div>
-                        </td>
-                        <td>${produto.categoria}</td>
-                        <td>R$ ${produto.precoCusto.toFixed(2)}</td>
-                        <td>R$ ${produto.precoVenda.toFixed(2)}</td>
-                        <td class="${stockClass}">${produto.quantidade}</td>
-                        <td style="color: var(--success)">${margem}%</td>
-                        <td>
-                            <button class="btn btn-danger btn-small" onclick="event.stopPropagation(); removerProduto(${produto.id})">Remover</button>
-                        </td>
-                    </tr>
-                `;
-                
-                if (produto.quantidade > 0) {
-                    select.innerHTML += `<option value="${produto.id}">${produto.emoji} ${produto.nome} (${produto.quantidade} disponíveis)</option>`;
-                }
-            });
-        }
-
-        // Vendas
-        function toggleParcelas() {
-            const formaPagamento = document.getElementById('formaPagamento').value;
-            const container = document.getElementById('parcelasContainer');
-            
-            if (formaPagamento === 'prazo') {
-                container.style.display = 'block';
-                document.getElementById('numeroParcelas').required = true;
-                document.getElementById('dataPrimeiraParcela').required = true;
-                
-                const hoje = new Date().toISOString().split('T')[0];
-                document.getElementById('dataPrimeiraParcela').value = hoje;
-                
-                calcularParcelas();
-            } else {
-                container.style.display = 'none';
-                document.getElementById('numeroParcelas').required = false;
-                document.getElementById('dataPrimeiraParcela').required = false;
-            }
-        }
-
-        function atualizarPrecoVenda() {
-            const produtoId = parseInt(document.getElementById('produtoVenda').value);
-            const produto = produtos.find(p => p.id === produtoId);
-            
-            if (produto) {
-                document.getElementById('precoUnitarioVenda').value = produto.precoVenda.toFixed(2);
-                calcularTotalVenda();
-            }
-        }
-
-        function calcularTotalVenda() {
-            const quantidade = parseInt(document.getElementById('quantidadeVenda').value) || 0;
-            const precoUnitario = parseFloat(document.getElementById('precoUnitarioVenda').value) || 0;
-            const total = quantidade * precoUnitario;
-            
-            document.getElementById('totalVenda').value = total.toFixed(2);
-            
-            if (document.getElementById('formaPagamento').value === 'prazo') {
-                calcularParcelas();
-            }
-        }
-
-        function calcularParcelas() {
-            const total = parseFloat(document.getElementById('totalVenda').value) || 0;
-            const entrada = parseFloat(document.getElementById('valorEntrada').value) || 0;
-            const restante = total - entrada;
-            const numParcelas = parseInt(document.getElementById('numeroParcelas').value) || 1;
-            const valorParcela = restante / numParcelas;
-            
-            document.getElementById('valorRestante').value = restante.toFixed(2);
-            document.getElementById('valorParcela').value = valorParcela.toFixed(2);
-        }
-
-        function calcularRestante() {
-            calcularParcelas();
-        }
-
-        function registrarVenda(e) {
-            e.preventDefault();
-            
-            const clienteId = parseInt(document.getElementById('clienteVenda').value);
-            const produtoId = parseInt(document.getElementById('produtoVenda').value);
-            const produto = produtos.find(p => p.id === produtoId);
-            const cliente = clientes.find(c => c.id === clienteId);
-            const quantidade = parseInt(document.getElementById('quantidadeVenda').value);
-            
-            if (!cliente) {
-                alert('Selecione um cliente válido!');
-                return;
-            }
-            
-            if (!produto) {
-                alert('Selecione um produto válido!');
-                return;
-            }
-            
-            if (quantidade > produto.quantidade) {
-                alert('Quantidade insuficiente em estoque!');
-                return;
-            }
-            
-            const total = parseFloat(document.getElementById('totalVenda').value);
-            const formaPagamento = document.getElementById('formaPagamento').value;
-            
-            const venda = {
-                id: Date.now(),
-                clienteId: clienteId,
-                clienteNome: cliente.nome,
-                produtoId: produtoId,
-                produtoNome: produto.nome,
-                quantidade: quantidade,
-                precoUnitario: parseFloat(document.getElementById('precoUnitarioVenda').value),
-                total: total,
-                precoCusto: produto.precoCusto,
-                formaPagamento: formaPagamento,
-                vendedor: vendedorAtual,
-                data: new Date().toISOString()
-            };
-            
-            // Se for a prazo, criar contas a receber
-            if (formaPagamento === 'prazo') {
-                const entrada = parseFloat(document.getElementById('valorEntrada').value) || 0;
-                const restante = parseFloat(document.getElementById('valorRestante').value);
-                const numParcelas = parseInt(document.getElementById('numeroParcelas').value);
-                const valorParcela = parseFloat(document.getElementById('valorParcela').value);
-                const dataPrimeira = new Date(document.getElementById('dataPrimeiraParcela').value);
-                
-                venda.entrada = entrada;
-                venda.restante = restante;
-                venda.parcelas = numParcelas;
-                
-                // Criar parcelas
-                for (let i = 0; i < numParcelas; i++) {
-                    const dataVencimento = new Date(dataPrimeira);
-                    dataVencimento.setMonth(dataVencimento.getMonth() + i);
-                    
-                    contasReceber.push({
-                        id: Date.now() + i,
-                        vendaId: venda.id,
-                        clienteId: clienteId,
-                        clienteNome: cliente.nome,
-                        produto: produto.nome,
-                        numeroParcela: i + 1,
-                        totalParcelas: numParcelas,
-                        valor: valorParcela,
-                        dataVencimento: dataVencimento.toISOString().split('T')[0],
-                        paga: false,
-                        vendedor: vendedorAtual
-                    });
-                }
-            }
-            
-            // Atualizar estoque
-            produto.quantidade -= quantidade;
-            
-            vendas.push(venda);
-            salvarDados();
-            atualizarTudo();
-            
-            document.getElementById('formVenda').reset();
-            document.getElementById('parcelasContainer').style.display = 'none';
-            document.getElementById('infoClienteVenda').style.display = 'none';
-            mostrarAlerta('Venda registrada com sucesso!', 'success');
-        }
-
-        function renderizarVendas() {
-            const lista = document.getElementById('listaVendas');
-            lista.innerHTML = '';
-            
-            const vendasOrdenadas = [...vendas].reverse();
-            
-            vendasOrdenadas.forEach(venda => {
-                const data = new Date(venda.data);
-                const dataFormatada = data.toLocaleDateString('pt-BR') + ' ' + data.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-                
-                let pagamento = venda.formaPagamento.charAt(0).toUpperCase() + venda.formaPagamento.slice(1);
-                if (venda.parcelas) {
-                    pagamento += ` (${venda.parcelas}x)`;
-                    if (venda.entrada && venda.entrada > 0) {
-                        pagamento += `<br><small style="color: var(--success);">Entrada: R$ ${venda.entrada.toFixed(2)}</small>`;
-                    }
-                }
-                
-                lista.innerHTML += `
-                    <tr onclick="abrirDetalhesCliente(${venda.clienteId})">
-                        <td>${dataFormatada}</td>
-                        <td><strong>${venda.clienteNome}</strong></td>
-                        <td>${venda.produtoNome}</td>
-                        <td>${venda.quantidade}</td>
-                        <td style="color: var(--primary); font-weight: 700;">R$ ${venda.total.toFixed(2)}</td>
-                        <td>${pagamento}</td>
-                        <td>${venda.vendedor}</td>
-                        <td><span class="badge badge-info">Ver Cliente</span></td>
-                    </tr>
-                `;
-            });
-        }
-
-        // Financeiro
-        function adicionarDespesa(e) {
-            e.preventDefault();
-            
-            const despesa = {
-                id: Date.now(),
-                descricao: document.getElementById('descricaoDespesa').value,
-                valor: parseFloat(document.getElementById('valorDespesa').value),
-                data: document.getElementById('dataDespesa').value
-            };
-            
-            despesas.push(despesa);
-            salvarDados();
-            atualizarTudo();
-            
-            document.getElementById('formDespesa').reset();
-            mostrarAlerta('Despesa adicionada!', 'success');
-        }
-
-        function removerDespesa(id) {
-            if (confirm('Deseja remover esta despesa?')) {
-                despesas = despesas.filter(d => d.id !== id);
-                salvarDados();
-                atualizarTudo();
-            }
-        }
-
-        function renderizarDespesas() {
-            const lista = document.getElementById('listaDespesas');
-            lista.innerHTML = '';
-            
-            despesas.forEach(despesa => {
-                const data = new Date(despesa.data + 'T00:00:00');
-                const dataFormatada = data.toLocaleDateString('pt-BR');
-                
-                lista.innerHTML += `
-                    <tr>
-                        <td>${dataFormatada}</td>
-                        <td>${despesa.descricao}</td>
-                        <td style="color: var(--danger); font-weight: 700;">R$ ${despesa.valor.toFixed(2)}</td>
-                        <td>
-                            <button class="btn btn-danger btn-small" onclick="removerDespesa(${despesa.id})">Remover</button>
-                        </td>
-                    </tr>
-                `;
-            });
-        }
-
-        // Contas a Receber
-        function marcarParcela(id) {
-            const parcela = contasReceber.find(c => c.id === id);
-            if (parcela) {
-                parcela.paga = !parcela.paga;
-                if (parcela.paga) {
-                    parcela.dataPagamento = new Date().toISOString().split('T')[0];
-                }
-                salvarDados();
-                atualizarTudo();
-            }
-        }
-
-        function renderizarContasReceber() {
-            const container = document.getElementById('listaContasReceber');
-            container.innerHTML = '';
-            
-            if (contasReceber.length === 0) {
-                container.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 40px;">Nenhuma conta a receber no momento.</p>';
-                return;
-            }
-            
-            // Agrupar por venda
-            const vendasAgrupadas = {};
-            contasReceber.forEach(conta => {
-                if (!vendasAgrupadas[conta.vendaId]) {
-                    vendasAgrupadas[conta.vendaId] = [];
-                }
-                vendasAgrupadas[conta.vendaId].push(conta);
-            });
-            
-            Object.values(vendasAgrupadas).forEach(parcelas => {
-                const primeira = parcelas[0];
-                const totalPago = parcelas.filter(p => p.paga).reduce((sum, p) => sum + p.valor, 0);
-                const totalGeral = parcelas.reduce((sum, p) => sum + p.valor, 0);
-                
-                container.innerHTML += `
-                    <div style="background: var(--bg-dark); padding: 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid var(--border);">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
-                            <div style="cursor: pointer;" onclick="abrirDetalhesCliente(${primeira.clienteId})">
-                                <h3 style="color: var(--text-light); margin-bottom: 5px;">👤 ${primeira.clienteNome}</h3>
-                                <p style="color: var(--text-muted); font-size: 0.9em;">${primeira.produto} - ${primeira.vendedor}</p>
-                            </div>
-                            <div style="text-align: right;">
-                                <div style="color: var(--primary); font-weight: 700; font-size: 1.2em;">R$ ${totalGeral.toFixed(2)}</div>
-                                <div style="color: var(--success); font-size: 0.9em;">Pago: R$ ${totalPago.toFixed(2)}</div>
-                            </div>
-                        </div>
-                        ${parcelas.map(parcela => {
-                            const hoje = new Date();
-                            const vencimento = new Date(parcela.dataVencimento + 'T00:00:00');
-                            const atrasada = !parcela.paga && vencimento < hoje;
-                            const classe = parcela.paga ? 'paga' : (atrasada ? 'atrasada' : '');
-                            
-                            return `
-                                <div class="parcela-item ${classe}">
-                                    <div>
-                                        <span style="font-weight: 600;">Parcela ${parcela.numeroParcela}/${parcela.totalParcelas}</span>
-                                        <span style="color: var(--text-muted); margin-left: 15px;">Venc: ${new Date(parcela.dataVencimento + 'T00:00:00').toLocaleDateString('pt-BR')}</span>
-                                        ${atrasada ? '<span class="badge badge-danger" style="margin-left: 10px;">ATRASADA</span>' : ''}
-                                    </div>
-                                    <div style="display: flex; align-items: center; gap: 15px;">
-                                        <span style="font-weight: 700; color: var(--primary);">R$ ${parcela.valor.toFixed(2)}</span>
-                                        <button class="btn ${parcela.paga ? 'btn-success' : 'btn-primary'} btn-small" onclick="marcarParcela(${parcela.id})">
-                                            ${parcela.paga ? '✓ Paga' : 'Marcar Paga'}
-                                        </button>
-                                    </div>
-                                </div>
-                            `;
-                        }).join('')}
-                    </div>
-                `;
-            });
-        }
-
-        // Catálogo
-        function renderizarCatalogo() {
-            const catalogo = document.getElementById('catalogoProdutos');
-            catalogo.innerHTML = '';
-            
-            if (produtos.length === 0) {
-                catalogo.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 40px; grid-column: 1/-1;">Nenhum produto cadastrado ainda.</p>';
-                return;
-            }
-            
-            produtos.forEach(produto => {
-                const stockClass = produto.quantidade === 0 ? 'stock-out' : produto.quantidade < 5 ? 'stock-low' : '';
-                const stockText = produto.quantidade === 0 ? 'ESGOTADO' : produto.quantidade < 5 ? `Apenas ${produto.quantidade} unidades` : `${produto.quantidade} em estoque`;
-                
-                const imagemHtml = produto.foto 
-                    ? `<img src="${produto.foto}" alt="${produto.nome}">`
-                    : `<span class="emoji-placeholder">${produto.emoji}</span>`;
-                
-                catalogo.innerHTML += `
-                    <div class="product-card" onclick="verDetalhesProduto(${produto.id})" style="cursor: pointer;">
-                        <div class="product-image">${imagemHtml}</div>
-                        <div class="product-name">${produto.nome}</div>
-                        ${produto.descricao ? `<div style="color: var(--text-muted); font-size: 0.85em; margin: 8px 0; line-height: 1.4;">${produto.descricao.substring(0, 80)}${produto.descricao.length > 80 ? '...' : ''}</div>` : ''}
-                        <div class="product-price">R$ ${produto.precoVenda.toFixed(2)}</div>
-                        <div class="product-stock ${stockClass}">${stockText}</div>
-                        <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); font-size: 0.85em; color: var(--text-muted);">
-                            ${produto.categoria}
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        function verDetalhesProduto(produtoId) {
-            const produto = produtos.find(p => p.id === produtoId);
-            if (!produto) return;
-            
-            const imagemHtml = produto.foto 
-                ? `<img src="${produto.foto}" alt="${produto.nome}" style="max-width: 100%; border-radius: 8px; margin-bottom: 20px;">`
-                : `<div style="font-size: 5em; text-align: center; margin: 20px 0;">${produto.emoji}</div>`;
-            
-            const margem = ((produto.precoVenda - produto.precoCusto) / produto.precoCusto * 100).toFixed(1);
-            
-            document.getElementById('modalClienteNome').textContent = produto.nome;
-            document.getElementById('modalClienteConteudo').innerHTML = `
-                ${imagemHtml}
-                
-                ${produto.descricao ? `
-                <div class="info-section">
-                    <h4>📝 Descrição</h4>
-                    <p style="color: var(--text-light); line-height: 1.6;">${produto.descricao}</p>
-                </div>
-                ` : ''}
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
-                    <div class="stat-card">
-                        <div class="stat-label">Categoria</div>
-                        <div class="stat-value" style="font-size: 1.2em;">${produto.categoria}</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-label">Preço de Venda</div>
-                        <div class="stat-value" style="font-size: 1.5em;">R$ ${produto.precoVenda.toFixed(2)}</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-label">Em Estoque</div>
-                        <div class="stat-value" style="font-size: 1.5em;">${produto.quantidade}</div>
-                    </div>
-                </div>
-                
-                <div class="info-section">
-                    <h4>💰 Informações Financeiras</h4>
-                    <div class="info-row">
-                        <span class="info-label">Preço de Custo:</span>
-                        <span class="info-value">R$ ${produto.precoCusto.toFixed(2)}</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">Preço de Venda:</span>
-                        <span class="info-value">R$ ${produto.precoVenda.toFixed(2)}</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">Margem de Lucro:</span>
-                        <span class="info-value" style="color: var(--success);">${margem}%</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">Lucro por Unidade:</span>
-                        <span class="info-value" style="color: var(--success);">R$ ${(produto.precoVenda - produto.precoCusto).toFixed(2)}</span>
-                    </div>
-                </div>
-            `;
-            document.getElementById('modalCliente').classList.add('active');
-        }
-
-        // Estatísticas
-        function atualizarEstatisticas() {
-            // Total de produtos cadastrados
-            document.getElementById('totalProdutos').textContent = produtos.length;
-            
-            // Total de unidades em estoque
-            const totalEstoque = produtos.reduce((sum, p) => sum + p.quantidade, 0);
-            document.getElementById('totalEstoque').textContent = totalEstoque;
-            
-            // Capital empatado (custo total do estoque)
-            const capitalEmpatado = produtos.reduce((sum, p) => sum + (p.precoCusto * p.quantidade), 0);
-            document.getElementById('capitalEmpatado').textContent = `R$ ${capitalEmpatado.toFixed(2)}`;
-            
-            // Valor potencial de venda (se vender tudo)
-            const valorPotencial = produtos.reduce((sum, p) => sum + (p.precoVenda * p.quantidade), 0);
-            document.getElementById('valorPotencial').textContent = `R$ ${valorPotencial.toFixed(2)}`;
-            
-            // Lucro potencial (diferença entre venda e custo)
-            const lucroPotencial = valorPotencial - capitalEmpatado;
-            document.getElementById('lucroPotencial').textContent = `R$ ${lucroPotencial.toFixed(2)}`;
-            
-            // Vendas hoje
-            const hoje = new Date().toISOString().split('T')[0];
-            const vendasHoje = vendas.filter(v => v.data.startsWith(hoje)).reduce((sum, v) => sum + v.total, 0);
-            document.getElementById('vendasHoje').textContent = `R$ ${vendasHoje.toFixed(2)}`;
-            
-            // Lucro do mês
-            const mesAtual = new Date().getMonth();
-            const anoAtual = new Date().getFullYear();
-            const vendasMes = vendas.filter(v => {
-                const dataVenda = new Date(v.data);
-                return dataVenda.getMonth() === mesAtual && dataVenda.getFullYear() === anoAtual;
-            });
-            
-            const receitaMes = vendasMes.reduce((sum, v) => sum + v.total, 0);
-            const custoMes = vendasMes.reduce((sum, v) => sum + (v.precoCusto * v.quantidade), 0);
-            const despesasMes = despesas.filter(d => {
-                const dataDespesa = new Date(d.data + 'T00:00:00');
-                return dataDespesa.getMonth() === mesAtual && dataDespesa.getFullYear() === anoAtual;
-            }).reduce((sum, d) => sum + d.valor, 0);
-            
-            const lucroMes = receitaMes - custoMes - despesasMes;
-            document.getElementById('lucroMes').textContent = `R$ ${lucroMes.toFixed(2)}`;
-            
-            // Contas a receber
-            const totalReceber = contasReceber.filter(c => !c.paga).reduce((sum, c) => sum + c.valor, 0);
-            document.getElementById('contasReceber').textContent = `R$ ${totalReceber.toFixed(2)}`;
-            
-            // Vendas por vendedor
-            const vendasPorVendedor = {
-                'Você': 0,
-                'Esposa': 0,
-                'Filha': 0
-            };
-            
-            vendas.forEach(v => {
-                if (vendasPorVendedor[v.vendedor] !== undefined) {
-                    vendasPorVendedor[v.vendedor] += v.total;
-                }
-            });
-            
-            document.getElementById('vendasVoce').textContent = `R$ ${vendasPorVendedor['Você'].toFixed(2)}`;
-            document.getElementById('vendasEsposa').textContent = `R$ ${vendasPorVendedor['Esposa'].toFixed(2)}`;
-            document.getElementById('vendasFilha').textContent = `R$ ${vendasPorVendedor['Filha'].toFixed(2)}`;
-            
-            // Lucro total
-            const receitaTotal = vendas.reduce((sum, v) => sum + v.total, 0);
-            const custoTotal = vendas.reduce((sum, v) => sum + (v.precoCusto * v.quantidade), 0);
-            const despesasTotal = despesas.reduce((sum, d) => sum + d.valor, 0);
-            const lucroTotal = receitaTotal - custoTotal - despesasTotal;
-            document.getElementById('lucroTotal').textContent = `R$ ${lucroTotal.toFixed(2)}`;
-        }
-
-        // Atualizar tudo
-        function atualizarTudo() {
-            renderizarProdutos();
-            renderizarClientes();
-            renderizarVendas();
-            renderizarDespesas();
-            renderizarContasReceber();
-            renderizarCatalogo();
-            atualizarEstatisticas();
-            atualizarStatusNuvem();
-        }
-
-        // Atualizar status da nuvem na interface
-        function atualizarStatusNuvem() {
-            const iconNuvem = document.getElementById('iconNuvem');
-            const textoNuvem = document.getElementById('textoNuvem');
-            const statusNuvem = document.getElementById('statusNuvem');
-            
-            if (usandoNuvem) {
-                iconNuvem.textContent = '☁️';
-                textoNuvem.textContent = 'Nuvem Ativa';
-                statusNuvem.style.borderColor = 'var(--success)';
-                statusNuvem.style.background = 'rgba(40, 167, 69, 0.1)';
-            } else {
-                iconNuvem.textContent = '💾';
-                textoNuvem.textContent = 'Modo Local';
-                statusNuvem.style.borderColor = 'var(--border)';
-                statusNuvem.style.background = 'var(--bg-dark)';
-            }
-        }
-
-        // Alertas
-        function mostrarAlerta(mensagem, tipo) {
-            const alertaExistente = document.querySelector('.alert');
-            if (alertaExistente) {
-                alertaExistente.remove();
-            }
-            
-            const alerta = document.createElement('div');
-            alerta.className = `alert alert-${tipo}`;
-            alerta.textContent = mensagem;
-            alerta.style.position = 'fixed';
-            alerta.style.top = '20px';
-            alerta.style.right = '20px';
-            alerta.style.zIndex = '10000';
-            alerta.style.animation = 'fadeIn 0.3s ease';
-            
-            document.body.appendChild(alerta);
-            
-            setTimeout(() => {
-                alerta.style.animation = 'fadeOut 0.3s ease';
-                setTimeout(() => alerta.remove(), 300);
-            }, 3000);
-        }
-
-        // Fechar modal ao clicar fora
-        document.getElementById('modalCliente').addEventListener('click', function(e) {
-            if (e.target === this) {
-                fecharModal();
-            }
-        });
-
-        // Inicializar
-        document.addEventListener('DOMContentLoaded', () => {
-            carregarDados();
-        });
-    </script>
-</body>
-</html>
+                                <th>Pagamento</th
