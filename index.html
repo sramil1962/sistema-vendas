@@ -1128,17 +1128,41 @@
         // Configuração do Firebase - CORRIGIDA COM SEUS DADOS REAIS
         const firebaseConfig = {
             apiKey: "AIzaSyAhj8TXnxMGv0YpzCS1vFgHHQe6vkzGod",
-    authDomain: "sistema-vendas-perfumes.firebaseapp.com",
-    databaseURL: "https://sistema-vendas-perfumes-default-rtdb.firebaseio.com",
-    projectId: "sistema-vendas-perfumes",
-    storageBucket: "sistema-vendas-perfumes.appspot.com",
-    messagingSenderId: "361311945051",
-    appId: "1:361311945051:web:bcbf5acba4b89c5b781a7e"
+            authDomain: "sistema-vendas-perfumes.firebaseapp.com",
+            databaseURL: "https://sistema-vendas-perfumes-default-rtdb.firebaseio.com",
+            projectId: "sistema-vendas-perfumes",
+            storageBucket: "sistema-vendas-perfumes.appspot.com",
+            messagingSenderId: "361311945051",
+            appId: "1:361311945051:web:bcbf5acba4b89c5b781a7e"
         };
 
         // Inicializar Firebase
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
+         // Criar ícone de nuvem permanentemente
+setTimeout(function() {
+    if (!document.getElementById('statusNuvem')) {
+        let statusDiv = document.createElement('div');
+        statusDiv.id = 'statusNuvem';
+        statusDiv.style.cssText = 'padding: 8px 16px; background: #16213e; border-radius: 8px; border: 1px solid #2a2a3e; font-size: 0.85em; display: inline-block; margin-right: 15px;';
+        
+        let usandoNuvem = localStorage.getItem('usarNuvem') === 'true';
+        let icon = usandoNuvem ? '☁️' : '💾';
+        let texto = usandoNuvem ? 'Nuvem Ativa' : 'Local';
+        
+        statusDiv.innerHTML = '<span id="iconNuvem">' + icon + '</span> <span id="textoNuvem">' + texto + '</span>';
+        
+        let headerContent = document.querySelector('.header-content');
+        if (headerContent) {
+            let vendorDiv = headerContent.querySelector('.vendor-selector');
+            if (vendorDiv) {
+                headerContent.insertBefore(statusDiv, vendorDiv);
+            } else {
+                headerContent.appendChild(statusDiv);
+            }
+        }
+    }
+}, 500);
         
         // Estado Global
         let vendedorAtual = 'Você';
