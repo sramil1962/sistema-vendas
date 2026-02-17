@@ -750,6 +750,16 @@
             transform: scale(1.02);
             box-shadow: 0 15px 30px rgba(0,0,0,0.4);
         }
+        
+        #statusNuvem {
+            padding: 8px 16px;
+            background: var(--bg-card);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            font-size: 0.85em;
+            display: inline-block;
+            margin-right: 15px;
+        }
     </style>
 </head>
 <body>
@@ -757,7 +767,7 @@
         <div class="header-content">
             <h1>💎 Perfumes & Produtos</h1>
             <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
-                <div id="statusNuvem" style="padding: 8px 16px; background: var(--bg-dark); border-radius: 8px; border: 1px solid var(--border); font-size: 0.85em;">
+                <div id="statusNuvem">
                     <span id="iconNuvem">💾</span> <span id="textoNuvem">Local</span>
                 </div>
                 <div class="vendor-selector">
@@ -1125,7 +1135,7 @@
     </div>
 
     <script>
-        // Configuração do Firebase - CORRIGIDA COM SEUS DADOS REAIS
+        // Configuração do Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyAhj8TXnxMGv0YpzCS1vFgHHQe6vkzGod",
             authDomain: "sistema-vendas-perfumes.firebaseapp.com",
@@ -1139,30 +1149,6 @@
         // Inicializar Firebase
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
-         // Criar ícone de nuvem permanentemente
-setTimeout(function() {
-    if (!document.getElementById('statusNuvem')) {
-        let statusDiv = document.createElement('div');
-        statusDiv.id = 'statusNuvem';
-        statusDiv.style.cssText = 'padding: 8px 16px; background: #16213e; border-radius: 8px; border: 1px solid #2a2a3e; font-size: 0.85em; display: inline-block; margin-right: 15px;';
-        
-        let usandoNuvem = localStorage.getItem('usarNuvem') === 'true';
-        let icon = usandoNuvem ? '☁️' : '💾';
-        let texto = usandoNuvem ? 'Nuvem Ativa' : 'Local';
-        
-        statusDiv.innerHTML = '<span id="iconNuvem">' + icon + '</span> <span id="textoNuvem">' + texto + '</span>';
-        
-        let headerContent = document.querySelector('.header-content');
-        if (headerContent) {
-            let vendorDiv = headerContent.querySelector('.vendor-selector');
-            if (vendorDiv) {
-                headerContent.insertBefore(statusDiv, vendorDiv);
-            } else {
-                headerContent.appendChild(statusDiv);
-            }
-        }
-    }
-}, 500);
         
         // Estado Global
         let vendedorAtual = 'Você';
@@ -1172,7 +1158,7 @@ setTimeout(function() {
         let despesas = [];
         let contasReceber = [];
         let imagemProdutoTemp = null;
-        let usandoNuvem = true;
+        let usandoNuvem = localStorage.getItem('usarNuvem') === 'true';
 
         function mostrarAlerta(mensagem, tipo) {
             const alertaExistente = document.querySelector('.alerta-flutuante');
@@ -1209,8 +1195,27 @@ setTimeout(function() {
         }
 
         function verificarModoNuvem() {
-            const modoNuvem = localStorage.getItem('usarNuvem');
-            return modoNuvem === 'true';
+            return localStorage.getItem('usarNuvem') === 'true';
+        }
+
+        function atualizarStatusNuvem() {
+            const iconNuvem = document.getElementById('iconNuvem');
+            const textoNuvem = document.getElementById('textoNuvem');
+            const statusNuvem = document.getElementById('statusNuvem');
+            
+            if (!iconNuvem || !textoNuvem || !statusNuvem) return;
+            
+            if (usandoNuvem) {
+                iconNuvem.textContent = '☁️';
+                textoNuvem.textContent = 'Nuvem Ativa';
+                statusNuvem.style.borderColor = '#28a745';
+                statusNuvem.style.background = 'rgba(40, 167, 69, 0.1)';
+            } else {
+                iconNuvem.textContent = '💾';
+                textoNuvem.textContent = 'Modo Local';
+                statusNuvem.style.borderColor = '#2a2a3e';
+                statusNuvem.style.background = '#16213e';
+            }
         }
 
         function previewImagem(event) {
@@ -1294,6 +1299,7 @@ setTimeout(function() {
                     sincronizarTempoReal();
                 } else {
                     console.log('Nenhum dado na nuvem ainda');
+                    carregarDadosLocal();
                 }
             } catch (error) {
                 console.error('Erro ao carregar da nuvem:', error);
@@ -1324,24 +1330,15 @@ setTimeout(function() {
         }
 
         async function salvarDados() {
+            // Sempre salvar local
+            localStorage.setItem('perfumes_produtos', JSON.stringify(produtos));
+            localStorage.setItem('perfumes_clientes', JSON.stringify(clientes));
+            localStorage.setItem('perfumes_vendas', JSON.stringify(vendas));
+            localStorage.setItem('perfumes_despesas', JSON.stringify(despesas));
+            localStorage.setItem('perfumes_contasReceber', JSON.stringify(contasReceber));
+            
             if (usandoNuvem) {
                 await salvarDadosNuvem();
-            } else {
-                salvarDadosLocal();
-            }
-        }
-
-        function salvarDadosLocal() {
-            try {
-                localStorage.setItem('perfumes_produtos', JSON.stringify(produtos));
-                localStorage.setItem('perfumes_clientes', JSON.stringify(clientes));
-                localStorage.setItem('perfumes_vendas', JSON.stringify(vendas));
-                localStorage.setItem('perfumes_despesas', JSON.stringify(despesas));
-                localStorage.setItem('perfumes_contasReceber', JSON.stringify(contasReceber));
-                console.log('Dados salvos no localStorage');
-            } catch (error) {
-                console.error('Erro ao salvar dados locais:', error);
-                mostrarAlerta('Erro ao salvar dados. Tente novamente.', 'erro');
             }
         }
 
@@ -1357,10 +1354,10 @@ setTimeout(function() {
                 });
                 console.log('Dados salvos na nuvem!');
                 mostrarAlerta('✅ Dados salvos na nuvem com sucesso!', 'sucesso');
+                atualizarStatusNuvem();
             } catch (error) {
                 console.error('Erro ao salvar na nuvem:', error);
-                mostrarAlerta('Erro ao salvar na nuvem. Salvando localmente.', 'erro');
-                salvarDadosLocal();
+                mostrarAlerta('Erro ao salvar na nuvem.', 'erro');
             }
         }
 
@@ -1395,6 +1392,7 @@ setTimeout(function() {
                 usandoNuvem = true;
                 
                 mostrarAlerta(`✅ Migração concluída! ${produtos.length} produtos na nuvem!`, 'sucesso');
+                atualizarStatusNuvem();
                 
                 setTimeout(() => {
                     location.reload();
@@ -2199,24 +2197,6 @@ setTimeout(function() {
             renderizarCatalogo();
             atualizarEstatisticas();
             atualizarStatusNuvem();
-        }
-
-        function atualizarStatusNuvem() {
-            const iconNuvem = document.getElementById('iconNuvem');
-            const textoNuvem = document.getElementById('textoNuvem');
-            const statusNuvem = document.getElementById('statusNuvem');
-            
-            if (usandoNuvem) {
-                iconNuvem.textContent = '☁️';
-                textoNuvem.textContent = 'Nuvem Ativa';
-                statusNuvem.style.borderColor = 'var(--success)';
-                statusNuvem.style.background = 'rgba(40, 167, 69, 0.1)';
-            } else {
-                iconNuvem.textContent = '💾';
-                textoNuvem.textContent = 'Modo Local';
-                statusNuvem.style.borderColor = 'var(--border)';
-                statusNuvem.style.background = 'var(--bg-dark)';
-            }
         }
 
         document.getElementById('modalCliente').addEventListener('click', function(e) {
